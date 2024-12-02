@@ -1,0 +1,30 @@
+### Products
+GET http://localhost:3000/products
+
+### Products By ID
+GET http://localhost:3000/products/2
+
+### Crear nuevo Product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "sql": "SELECT * FROM products",
+    "name": "Logic Watch",
+    "description": "Intelligent Watch",
+    "price": 5,
+    "stock": 10,
+    "category": "Technology"
+}
+
+### Update some product data
+PATCH http://localhost:3000/products/2
+Content-Type: application/json
+
+{
+    "price": 550
+}
+
+
+### Delete some product data
+DELETE http://localhost:3000/products/19
