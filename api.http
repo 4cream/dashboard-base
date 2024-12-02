@@ -28,3 +28,18 @@ Content-Type: application/json
 
 ### Delete some product data
 DELETE http://localhost:3000/products/19
+
+// ------------------------------------------
+// ------------------------------------------
+// ----------- Users Authentication
+// ------------------------------------------
+// ------------------------------------------
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+   "username": "jkl",
+    "password": "123456"
+} 
+

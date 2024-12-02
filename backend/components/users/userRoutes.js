@@ -7,9 +7,9 @@ export const createUserRoutes = () => {
     
     const productRoutes = Router();
 
-    productRoutes.get('/', userController.getProductsController);
+    productRoutes.get('/', userController.getUsersController);
     // productRoutes.post('/login', );
-    // productRoutes.post('/register', );
+    productRoutes.post('/register', userController.resgisterUsersController);
     // productRoutes.post('/logout', );
     // productRoutes.get('/protected', );
 
