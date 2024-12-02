@@ -58,7 +58,7 @@ export class ProductModel {
         const [product] = await connection
           .query('UPDATE products SET ? WHERE id = ?;', [input, id]);
         const [productUpdated] = await connection
-          .query('SELECT id, name, price FROM products WHERE id = ?;', [id]);
+          .query('SELECT id, name, price FROM products WHERE id = ?;', [id])
 
         //console.log(`El producto con el id ${id} es: ${product}`); // = [Object, Object]
         console.log("Info de la actualizacion en la BD: ", product);
