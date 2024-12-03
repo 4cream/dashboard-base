@@ -35,4 +35,8 @@ export class UsersController {
         res.status(401).send(error.message);
     }
   }
+
+  protectedUserController = (req, res) => {
+    res.render('protected');
+  }
 }

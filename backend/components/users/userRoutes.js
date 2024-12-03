@@ -11,7 +11,7 @@ export const createUserRoutes = () => {
     productRoutes.post('/login', userController.loginUserController);
     productRoutes.post('/register', userController.resgisterUsersController);
     // productRoutes.post('/logout', );
-    // productRoutes.get('/protected', );
+    productRoutes.get('/protected', userController.protectedUserController);
 
 
 
