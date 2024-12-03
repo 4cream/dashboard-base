@@ -1,5 +1,10 @@
 [
     {
+        "_id": "9ac234e4-5d16-49da-9288-2afadeaab5cb",
+        "username": "maradona",
+        "password": "$2b$10$.u6A2QNevbTBO5sHO0eM0enB/rf00iDMJjUPlIvnrR0Y9YwiMCnty"
+    },
+    {
         "_id": "20f3e489-ee19-49a5-b333-dd24ef2e7e1b",
         "username": "ronaldo",
         "password": "$2b$10$XERl/uvt6GaUoBznbmxcl.hNm0EJPZpZI48eUTI8pqGrD5Z2XjgNm"

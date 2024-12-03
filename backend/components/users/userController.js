@@ -8,7 +8,17 @@ export class UsersController {
   constructor() {}
 
   getUsersController = (req, res) => {
-    res.render("index");
+    const token = req.cookies.access_token;
+    if(!token) return res.render('index');
+
+    try {
+      const data = jwt.verify(token, config.jwt.secret);
+      res.render('index', data); // {_id, username}
+
+    } catch(error) {
+      res.render('index');
+    }
+
   };
 
   resgisterUsersController = async (req, res) => {
@@ -34,15 +44,34 @@ export class UsersController {
           config.jwt.secret, {
           expiresIn: '1h'
         });
-
-        res.send({user});
+        
+        res.cookie('access_token', token, {
+          httpOnly: true, // la cookie solo se puede acceder en el server
+          secure: process.env.NODE_ENV === 'production', // la cookie solo se puede acceder en https
+          sameSite: 'strict', // la cookie solo se puede acceder desde el mismo dominio
+          maxAge: 1000 * 60 * 60 // la cookie tiene un tiempo de validez de 1 hora
+        })
+        .send({user});
 
     } catch(error) {
         res.status(401).send(error.message);
     }
   }
 
-  protectedUserController = (req, res) => {
-    res.render('protected');
+  protectedUserController = (req, res) => {    
+    const token = req.cookies.access_token;
+    
+    if(!token) {
+      return res.status(403).send('Access not authorized');
+    }
+
+    try {
+      const data = jwt.verify(token, config.jwt.secret);
+      res.render('protected', data); // {_id, username}
+
+    } catch(error) {
+      res.status(401).send('Access not authorized');
+    }
+
   }
 }
