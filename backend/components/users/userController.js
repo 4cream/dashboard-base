@@ -1,7 +1,8 @@
 // Capa Web
 // Esta capa maneja las solicitudes HTTP y las respuestas. Aquí es donde se utilizan los objetos req y res.
-
+import jwt from "jsonwebtoken";
 import { UserRepository } from "./user-repository.js";
+import { config } from "../../config/app.js";
 
 export class UsersController {
   constructor() {}
@@ -29,6 +30,11 @@ export class UsersController {
 
     try {
         const user = await UserRepository.login({username, password});
+        const token = jwt.sign({id: user._id, username: user.username}, 
+          config.jwt.secret, {
+          expiresIn: '1h'
+        });
+
         res.send({user});
 
     } catch(error) {

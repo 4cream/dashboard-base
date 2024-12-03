@@ -17,6 +17,9 @@ export const config = {
   cors: {
     origin: process.env.CORS_ORIGIN || '*', // Configuración de CORS
   },
+  jwt: {
+    secret: process.env.SECRET_JWT_KEY // JWT Secret Key
+  }
   // Puedes agregar más configuraciones como API keys, tiempo de sesiones, etc.
 };
 
