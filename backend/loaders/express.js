@@ -11,6 +11,7 @@ export const initExpressApp = ({productModel}) => {
     const userRoutes = createUserRoutes();
     const routes = createProductRoutes({productModel});
 
+    app.set('view engine', 'ejs');
     app.use(express.json());
     app.use('/', userRoutes);
     app.use('/products', routes);
