@@ -10,12 +10,12 @@ export class UsersController {
     res.send("<h1>Hello world<h1>");
   };
 
-  resgisterUsersController = (req, res) => {
+  resgisterUsersController = async (req, res) => {
     const {username, password} = req.body;
     console.log({username, password});
     
     try {
-        const id = UserRepository.create({username, password});
+        const id = await UserRepository.create({username, password});
         res.send({id});
         
     } catch(error) {
@@ -23,4 +23,16 @@ export class UsersController {
     }
 
   };
+
+  loginUserController = async (req, res) => {
+    const {username, password} = req.body;
+
+    try {
+        const user = await UserRepository.login({username, password});
+        res.send({user});
+
+    } catch(error) {
+        res.status(401).send(error.message);
+    }
+  }
 }
