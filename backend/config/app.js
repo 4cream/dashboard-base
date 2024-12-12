@@ -6,14 +6,14 @@
 process.loadEnvFile();
 
 const {
-  PORT,
-  NODE_ENV,
-  DB_HOST,
-  DB_USER,
-  DB_PASSWORD,
-  DB_NAME,
-  DB_PORT,
-  CORS_ORIGIN
+  PORT = 3000,
+  NODE_ENV = 'development',
+  DB_HOST = 'localhost',
+  DB_USER = '',
+  DB_PASSWORD = '',
+  DB_NAME = '',
+  DB_PORT = 3306,
+  CORS_ORIGIN = '*',
 } = process.env;
 
 export const config = {
@@ -29,7 +29,7 @@ export const config = {
     port: DB_PORT
   },
   cors: {
-    origin: CORS_ORIGIN || '*', // Configuración de CORS
+    origin: CORS_ORIGIN, // Configuración de CORS
   },
   // Puedes agregar más configuraciones como API keys, tiempo de sesiones, etc.
 };
