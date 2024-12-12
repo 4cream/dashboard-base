@@ -172,9 +172,11 @@
                     body: JSON.stringify({ username, password })
                 })
                     .then(res => {
+                        console.log("Que viene en la res? ", res);
+                        
                         if (res.ok) {
-                            loginSpan.innerText = 'Registered User. Loading...';
-                            loginSpan.style.color = 'green';
+                            registerSpan.innerText = 'Registered User. Loading...';
+                            registerSpan.style.color = 'green';
                             setTimeout(() => {
                                 window.location.href = '/protected';
                             }, 2000);
@@ -192,8 +194,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
+                }
             })
                 .then(res => {
                     console.log(res);

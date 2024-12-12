@@ -17,8 +17,11 @@ export class UserRepository {
         Validation.username(username);
         Validation.password(password);
 
+        console.log("Cual user viene? ", username);
         // validate if username already exists
         const user = User.findOne({username});
+        console.log("Ya existe ese user? ", user);
+        
         if(user) throw new Error('Username already exist');
 
         const id = crypto.randomUUID();

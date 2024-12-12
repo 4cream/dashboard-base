@@ -18,6 +18,8 @@ export class UsersController {
     console.log({username, password});
     
     try {
+      console.log("Entra?");
+      
         const id = await UserRepository.create({username, password});
         res.send({id});
         
@@ -53,8 +55,13 @@ export class UsersController {
   protectedUserController = (req, res) => {   
     const {user} = req.session; 
     if(!user) return res.status(403).send('Access not authorized');
-    
+
     res.render('protected', user); // {_id, username}
 
+  }
+
+  logoutUserController = (req, res) => {
+    res.clearCookie('access_token')
+    .json({message: 'Logout successful!'}); // Se puede hacer una redireccion a otra ruta Home por ejemplo
   }
 }
